@@ -1,0 +1,9 @@
+[Unit]
+Description=cloudinit
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/coreos-cloudinit --from-file /root/RPICluster/cloud-init/rpic.conf
+
+[Install]
+WantedBy=multi-user.target

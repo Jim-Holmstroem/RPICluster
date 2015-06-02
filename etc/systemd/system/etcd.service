@@ -1,0 +1,12 @@
+[Unit]
+Description=etcd
+Wants=network.target network-online.target
+After=network.target network-online.target cloudinit.service
+
+[Service]
+ExecStart=/usr/bin/etcd
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

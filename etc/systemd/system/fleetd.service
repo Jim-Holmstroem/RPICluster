@@ -1,0 +1,11 @@
+[Unit]
+Description=fleetd
+After=etcd.service
+
+[Service]
+ExecStart=/usr/bin/fleetd
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
