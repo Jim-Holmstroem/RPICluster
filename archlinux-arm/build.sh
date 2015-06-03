@@ -3,12 +3,13 @@
 set -e
 
 buildfolder=$(basename $0)-$RANDOM
+scriptfolder=$(dirname $(readlink -f $0))
 
 mkdir -p "$buildfolder"
 
-pacstrap -C $(readlink -m pacman.conf) -c -G -M -d "$buildfolder" \
-	filesystem shadow pacman gzip bzip2 sed grep gettext bash archlinux-keyring \
-	vi which
+pacstrap -C "$scriptfolder/pacman.conf" -c -G -M -d "$buildfolder" \
+        filesystem shadow pacman gzip bzip2 sed grep gettext bash archlinux-keyring \
+            vi which
 
 # clear packages cache
 rm -f "$buildfolder/var/cache/pacman/pkg/"*
