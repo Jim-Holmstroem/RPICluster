@@ -6,7 +6,7 @@ buildfolder=$(basename $0)-$RANDOM
 
 mkdir -p "$buildfolder"
 
-pacstrap -C ./pacman.conf -c -G -M -d "$buildfolder" \
+pacstrap -C $(readlink -m pacman.conf) -c -G -M -d "$buildfolder" \
 	filesystem shadow pacman gzip bzip2 sed grep gettext bash archlinux-keyring \
 	vi which
 
