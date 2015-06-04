@@ -1,9 +1,9 @@
 [Unit]
-Description=build-archlinux-arm-docker
+Description=build-archlinux-armv7-docker
 
 [Service]
 Type=simple
-ExecStart=/root/RPICluster/archlinux-arm/build.sh
+ExecStart=/root/RPICluster/archlinux-armv7h/build.sh
 
 [Install]
 WantedBy=daily.target

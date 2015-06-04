@@ -8,8 +8,21 @@ scriptfolder=$(dirname $(readlink -f $0))
 mkdir -p "$buildfolder"
 
 pacstrap -C "$scriptfolder/pacman.conf" -c -G -M -d "$buildfolder" \
-        filesystem shadow pacman gzip bzip2 sed grep gettext bash archlinux-keyring \
-            vi which
+        filesystem \
+        shadow \
+        pacman \
+        gzip \
+        bzip2 \
+        sed \
+        grep \
+        gettext \
+        bash \
+        archlinux-keyring \
+        vi \
+        which \
+        file \
+        fakeroot \
+        binutils
 
 # clear packages cache
 rm -f "$buildfolder/var/cache/pacman/pkg/"*
@@ -64,9 +77,9 @@ arch-chroot "$buildfolder" \
 		pacman-key --populate archlinux'
 
 datetag=$(date +%Y.%m.%d)
-imageid=$(tar --numeric-owner -C "$buildfolder" -c . | docker import - jimho/archlinux-arm:latest)
+imageid=$(tar --numeric-owner -C "$buildfolder" -c . | docker import - jimho/archlinux-armv7h:latest)
 
-docker tag -f $imageid jimho/archlinux-arm:$datetag
-docker push jimho/archlinux-arm:$datetag
+docker tag -f $imageid jimho/archlinux-armv7h:$datetag
+docker push jimho/archlinux-armv7h:$datetag
 
-rm -rf "$buildfolder" 
+rm -rf "$buildfolder"

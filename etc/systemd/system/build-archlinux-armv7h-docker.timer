@@ -1,5 +1,5 @@
 [Unit]
-Description=build-archlinux-arm-docker.timer
+Description=build-archlinux-armv7-docker.timer
 
 [Timer]
 OnCalendar=daily
